@@ -1,76 +1,88 @@
-# React + TypeScript + Vite
+# NovaShop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+E-commerce frontend de demostración construido con React y TypeScript. El objetivo principal del proyecto es implementar un flujo de **CI/CD automatizado** (GitHub Actions → Vercel) que valide el código con linting y tests antes de cada despliegue.
 
-Currently, two official plugins are available:
+[![CI/CD](https://github.com/PLManuel/nova-shop-web/actions/workflows/deploy.yml/badge.svg)](https://github.com/PLManuel/nova-shop-web/actions/workflows/deploy.yml)
+[![Deploy](https://img.shields.io/badge/Vercel-deployed-brightgreen?logo=vercel)](https://nova-shop-web.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Demo
 
-## React Compiler
+🔗 **[nova-shop-web.vercel.app](https://nova-shop-web.vercel.app/)**
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Stack
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+| Tecnología | Uso |
+|---|---|
+| [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) | UI y tipado estático |
+| [Vite 8](https://vite.dev/) + React Compiler | Bundler y compilación optimizada |
+| [Tailwind CSS v4](https://tailwindcss.com/) | Estilos utilitarios |
+| [@antfu/eslint-config](https://github.com/antfu/eslint-config) | Linting estricto |
+| [Vitest](https://vitest.dev/) + [React Testing Library](https://testing-library.com/) | Pruebas unitarias |
+| [GitHub Actions](https://docs.github.com/en/actions) | Pipeline CI/CD |
+| [Vercel](https://vercel.com/) | Hosting y despliegue |
 
-## Expanding the ESLint configuration
+## Pipeline CI/CD
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Cada push a `main` ejecuta el siguiente pipeline. El despliegue solo ocurre si **todos** los pasos anteriores pasan.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+lint ──┐
+       ├──► build ──► deploy (Vercel)
+test ──┘
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+| Job | Descripción |
+|---|---|
+| **Lint** | `pnpm run lint` — revisa estilo y calidad del código |
+| **Test** | `pnpm run test:run` — ejecuta la suite de Vitest |
+| **Build** | `pnpm run build` — compila con TypeScript + Vite |
+| **Deploy** | `vercel --prod` — publica en producción |
 
-```js
-import reactDom from 'eslint-plugin-react-dom'
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
+## Estructura del proyecto
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── components/
+│   ├── Cart.tsx          # Carrito: lista de items, total y botón "Clear"
+│   ├── ProductCard.tsx   # Tarjeta individual de producto
+│   └── ProductList.tsx   # Grilla de productos
+├── data/
+│   └── products.json     # Mock data con 6 productos
+├── test/
+│   ├── setup.ts          # Configuración de @testing-library/jest-dom
+│   ├── Cart.test.tsx     # Tests del componente Cart
+│   └── ProductList.test.tsx  # Tests del componente ProductList
+├── types/
+│   └── product.ts        # Interfaces Product y CartItem
+├── App.tsx               # Raíz: estado del carrito y layout principal
+├── App.css               # Estilos globales de la app
+└── main.tsx              # Entry point
+```
+
+## Desarrollo local
+
+**Requisitos:** Node.js ≥ 22, pnpm ≥ 11
+
+```bash
+# Instalar dependencias
+pnpm install
+
+# Servidor de desarrollo con HMR
+pnpm run dev
+
+# Linting
+pnpm run lint
+
+# Tests en modo watch
+pnpm run test
+
+# Tests (una sola ejecución, para CI)
+pnpm run test:run
+
+# Compilación de producción
+pnpm run build
+```
+
+## Licencia
+
+MIT
