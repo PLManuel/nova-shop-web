@@ -17,7 +17,6 @@ describe('cart', () => {
     ]
     render(<Cart items={items} onClear={vi.fn()} />)
     expect(screen.getByText('Test Laptop')).toBeInTheDocument()
-    // $1999.98 appears twice: once in the item line, once in the total
     expect(screen.getAllByText('$1999.98')).toHaveLength(2)
     expect(screen.getByRole('button', { name: /clear cart/i })).toBeInTheDocument()
   })

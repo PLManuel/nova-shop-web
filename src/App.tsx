@@ -2,7 +2,6 @@ import type { CartItem, Product } from './types/product'
 import { useState } from 'react'
 import Cart from './components/Cart'
 import ProductList from './components/ProductList'
-import './App.css'
 
 function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
