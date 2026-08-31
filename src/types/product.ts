@@ -4,6 +4,9 @@ export interface Product {
   price: number
   imageUrl: string
   description: string
+  category: string
+  rating: number
+  stock: number
 }
 
 export interface CartItem {

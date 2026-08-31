@@ -25,3 +25,6 @@ dist-ssr
 
 .vercel
 .env*
+
+PLAN_TA1.md
+PLAN_MEJORAS.md

@@ -10,9 +10,21 @@ function ProductList({ onAddToCart }: Props) {
   const products = productsData as Product[]
 
   return (
-    <section>
-      <h2 className="mb-6 text-2xl font-bold text-gray-900">Catalog</h2>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+    <section id="catalog" className="py-12">
+      <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <span className="text-xs font-bold uppercase tracking-wider text-blue-600">Featured Gear</span>
+          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">All Products</h2>
+        </div>
+        <p className="text-sm text-gray-500">
+          Showing
+          {products.length}
+          {' '}
+          products with free delivery
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {products.map(product => (
           <ProductCard
             key={product.id}

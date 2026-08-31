@@ -1,10 +1,22 @@
 import type { CartItem, Product } from './types/product'
 import { useState } from 'react'
 import Cart from './components/Cart'
+import Hero from './components/Hero'
+import Navbar from './components/Navbar'
 import ProductList from './components/ProductList'
+import './App.css'
 
 function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [isCartOpen, setIsCartOpen] = useState(false)
+  const [toastMessage, setToastMessage] = useState<string | null>(null)
+
+  function showToast(msg: string) {
+    setToastMessage(msg)
+    setTimeout(() => {
+      setToastMessage(null)
+    }, 2500)
+  }
 
   function addToCart(product: Product) {
     setCartItems((prev) => {
@@ -18,6 +30,25 @@ function App() {
       }
       return [...prev, { product, quantity: 1 }]
     })
+    showToast(`Added "${product.name}" to cart!`)
+  }
+
+  function updateQuantity(productId: number, delta: number) {
+    setCartItems((prev) => {
+      return prev
+        .map((item) => {
+          if (item.product.id === productId) {
+            const newQty = item.quantity + delta
+            return newQty > 0 ? { ...item, quantity: newQty } : null
+          }
+          return item
+        })
+        .filter((item): item is CartItem => item !== null)
+    })
+  }
+
+  function removeItem(productId: number) {
+    setCartItems(prev => prev.filter(item => item.product.id !== productId))
   }
 
   function clearCart() {
@@ -27,28 +58,42 @@ function App() {
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="border-b border-gray-200 bg-white shadow-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-          <h1 className="text-2xl font-bold text-blue-600">NovaShop</h1>
-          <span className="text-sm text-gray-500">
-            {totalItems}
-            {' '}
-            {totalItems === 1 ? 'item' : 'items'}
-            {' '}
-            in cart
-          </span>
-        </div>
-      </header>
+    <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-blue-500 selection:text-white">
+      {/* Navbar */}
+      <Navbar cartCount={totalItems} onOpenCart={() => setIsCartOpen(true)} />
 
-      <main className="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-8 lg:flex-row">
-        <div className="flex-1">
-          <ProductList onAddToCart={addToCart} />
-        </div>
-        <div className="w-full lg:w-80 lg:shrink-0">
-          <Cart items={cartItems} onClear={clearCart} />
-        </div>
+      {/* Hero */}
+      <Hero />
+
+      {/* Main Content */}
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <ProductList onAddToCart={addToCart} />
       </main>
+
+      {/* Footer */}
+      <footer className="mt-20 border-t border-gray-200 bg-white py-8 text-center text-sm text-gray-500">
+        <div className="mx-auto max-w-7xl px-4">
+          <p>© 2026 NovaShop. Modern E-commerce Demo with automated CI/CD.</p>
+        </div>
+      </footer>
+
+      {/* Cart Drawer */}
+      <Cart
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        items={cartItems}
+        onClear={clearCart}
+        onUpdateQuantity={updateQuantity}
+        onRemoveItem={removeItem}
+      />
+
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-2xl bg-gray-900 px-4 py-3 text-sm font-semibold text-white shadow-2xl transition-all animate-bounce">
+          <span>✨</span>
+          <span>{toastMessage}</span>
+        </div>
+      )}
     </div>
   )
 }

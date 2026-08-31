@@ -3,42 +3,60 @@
     "id": 1,
     "name": "Laptop Pro X",
     "price": 1299.99,
-    "imageUrl": "https://placehold.co/400x300/3b82f6/ffffff?text=Laptop+Pro+X",
-    "description": "High-performance laptop for developers and creatives."
+    "imageUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=400&fit=crop&q=80",
+    "description": "High-performance laptop for developers and creatives.",
+    "category": "Laptops",
+    "rating": 4.8,
+    "stock": 12
   },
   {
     "id": 2,
     "name": "Wireless Headphones",
     "price": 89.99,
-    "imageUrl": "https://placehold.co/400x300/8b5cf6/ffffff?text=Wireless+Headphones",
-    "description": "Premium sound quality with 30-hour battery life."
+    "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=400&fit=crop&q=80",
+    "description": "Premium sound quality with 30-hour battery life.",
+    "category": "Audio",
+    "rating": 4.6,
+    "stock": 34
   },
   {
     "id": 3,
     "name": "Mechanical Keyboard",
     "price": 149.99,
-    "imageUrl": "https://placehold.co/400x300/10b981/ffffff?text=Mechanical+Keyboard",
-    "description": "Tactile switches with customizable RGB backlight."
+    "imageUrl": "https://images.unsplash.com/photo-1626958390898-162d3577f293?w=600&h=400&fit=crop&q=80",
+    "description": "Tactile switches with customizable RGB backlight.",
+    "category": "Peripherals",
+    "rating": 4.7,
+    "stock": 8
   },
   {
     "id": 4,
     "name": "4K Monitor",
     "price": 499.99,
-    "imageUrl": "https://placehold.co/400x300/f59e0b/ffffff?text=4K+Monitor",
-    "description": "27-inch IPS panel, 144 Hz refresh rate."
+    "imageUrl": "https://images.unsplash.com/photo-1551645120-d70bfe84c826?w=600&h=400&fit=crop&q=80",
+    "description": "27-inch IPS panel, 144 Hz refresh rate.",
+    "category": "Displays",
+    "rating": 4.9,
+    "stock": 5
   },
   {
     "id": 5,
     "name": "USB-C Hub",
     "price": 49.99,
-    "imageUrl": "https://placehold.co/400x300/ef4444/ffffff?text=USB-C+Hub",
-    "description": "7-in-1 hub with 4K HDMI and 100 W pass-through."
+    "imageUrl": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&h=400&fit=crop&q=80",
+    "description": "7-in-1 hub with 4K HDMI and 100 W pass-through.",
+    "category": "Accessories",
+    "rating": 4.4,
+    "stock": 50
   },
   {
     "id": 6,
     "name": "Webcam HD",
     "price": 79.99,
-    "imageUrl": "https://placehold.co/400x300/06b6d4/ffffff?text=Webcam+HD",
-    "description": "1080p autofocus camera with built-in microphone."
+    "imageUrl": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=400&fit=crop&q=80",
+    "description": "1080p autofocus camera with built-in microphone.",
+    "category": "Peripherals",
+    "rating": 4.3,
+    "stock": 22
   }
 ]
