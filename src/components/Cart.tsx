@@ -83,10 +83,7 @@ function Cart({ isOpen, onClose, items, onClear, onUpdateQuantity, onRemoveItem 
                         <div className="min-w-0 flex-1">
                           <h4 className="truncate text-sm font-semibold text-gray-900">{item.product.name}</h4>
                           <p className="mt-0.5 text-xs text-gray-500">
-                            $
-                            {item.product.price.toFixed(2)}
-                            {' '}
-                            c/u
+                            {`S/. ${item.product.price.toFixed(2)} c/u`}
                           </p>
 
                           <div className="mt-2 flex items-center gap-2">
@@ -128,8 +125,7 @@ function Cart({ isOpen, onClose, items, onClear, onUpdateQuantity, onRemoveItem 
                           </div>
                         </div>
                         <div className="text-right text-sm font-bold text-gray-900">
-                          $
-                          {(item.product.price * item.quantity).toFixed(2)}
+                          {`S/. ${(item.product.price * item.quantity).toFixed(2)}`}
                         </div>
                       </li>
                     ))}
@@ -144,8 +140,7 @@ function Cart({ isOpen, onClose, items, onClear, onUpdateQuantity, onRemoveItem 
                 <div className="flex justify-between text-gray-600">
                   <span>Subtotal</span>
                   <span>
-                    $
-                    {subtotal.toFixed(2)}
+                    {`S/. ${subtotal.toFixed(2)}`}
                   </span>
                 </div>
                 <div className="flex justify-between text-gray-600">
@@ -155,8 +150,7 @@ function Cart({ isOpen, onClose, items, onClear, onUpdateQuantity, onRemoveItem 
                 <div className="flex justify-between border-t border-gray-200 pt-2 text-base font-extrabold text-gray-900">
                   <span>Total</span>
                   <span className="text-blue-600">
-                    $
-                    {total.toFixed(2)}
+                    {`S/. ${total.toFixed(2)}`}
                   </span>
                 </div>
               </div>

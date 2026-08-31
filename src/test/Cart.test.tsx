@@ -26,8 +26,8 @@ describe('cart', () => {
     ]
     render(<Cart isOpen={true} onClose={vi.fn()} items={items} onClear={vi.fn()} />)
     expect(screen.getByText('Laptop de Prueba')).toBeInTheDocument()
-    // $1999.98 appears in item subtotal, cart subtotal, and cart total
-    expect(screen.getAllByText('$1999.98')).toHaveLength(3)
+    // S/. 1999.98 appears in item subtotal, cart subtotal, and cart total
+    expect(screen.getAllByText('S/. 1999.98')).toHaveLength(3)
     expect(screen.getByRole('button', { name: /vaciar carrito/i })).toBeInTheDocument()
   })
 

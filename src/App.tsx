@@ -73,7 +73,7 @@ function App() {
       {/* Pie de página */}
       <footer className="mt-20 border-t border-gray-200 bg-white py-8 text-center text-sm text-gray-500">
         <div className="mx-auto max-w-7xl px-4">
-          <p>© 2026 NovaShop. Demostración de E-commerce con CI/CD automatizado.</p>
+          <p>© 2026 NovaShop</p>
         </div>
       </footer>
 
