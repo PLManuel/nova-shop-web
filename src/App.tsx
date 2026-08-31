@@ -1,6 +1,7 @@
 import type { CartItem, Product } from './types/product'
 import { useState } from 'react'
 import Cart from './components/Cart'
+import CheckoutModal from './components/CheckoutModal'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import ProductList from './components/ProductList'
@@ -9,6 +10,7 @@ import './App.css'
 function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false)
   const [toastMessage, setToastMessage] = useState<string | null>(null)
 
   function showToast(msg: string) {
@@ -55,6 +57,16 @@ function App() {
     setCartItems([])
   }
 
+  function handleStartCheckout() {
+    setIsCartOpen(false)
+    setIsCheckoutOpen(true)
+  }
+
+  function handleCheckoutSuccess() {
+    setCartItems([])
+    showToast('¡Compra completada con éxito!')
+  }
+
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   return (
@@ -73,7 +85,7 @@ function App() {
       {/* Pie de página */}
       <footer className="mt-20 border-t border-gray-200 bg-white py-8 text-center text-sm text-gray-500">
         <div className="mx-auto max-w-7xl px-4">
-          <p>© 2026 NovaShop</p>
+          <p>© 2026 NovaShop. Demostración de E-commerce con CI/CD automatizado.</p>
         </div>
       </footer>
 
@@ -85,6 +97,15 @@ function App() {
         onClear={clearCart}
         onUpdateQuantity={updateQuantity}
         onRemoveItem={removeItem}
+        onCheckout={handleStartCheckout}
+      />
+
+      {/* Modal de Pago Simulado */}
+      <CheckoutModal
+        isOpen={isCheckoutOpen}
+        onClose={() => setIsCheckoutOpen(false)}
+        items={cartItems}
+        onSuccess={handleCheckoutSuccess}
       />
 
       {/* Notificación Toast */}

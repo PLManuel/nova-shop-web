@@ -7,9 +7,10 @@ interface Props {
   onClear: () => void
   onUpdateQuantity?: (productId: number, delta: number) => void
   onRemoveItem?: (productId: number) => void
+  onCheckout?: () => void
 }
 
-function Cart({ isOpen, onClose, items, onClear, onUpdateQuantity, onRemoveItem }: Props) {
+function Cart({ isOpen, onClose, items, onClear, onUpdateQuantity, onRemoveItem, onCheckout }: Props) {
   if (!isOpen)
     return null
 
@@ -83,7 +84,11 @@ function Cart({ isOpen, onClose, items, onClear, onUpdateQuantity, onRemoveItem 
                         <div className="min-w-0 flex-1">
                           <h4 className="truncate text-sm font-semibold text-gray-900">{item.product.name}</h4>
                           <p className="mt-0.5 text-xs text-gray-500">
-                            {`S/. ${item.product.price.toFixed(2)} c/u`}
+                            S/.
+                            {' '}
+                            {item.product.price.toFixed(2)}
+                            {' '}
+                            c/u
                           </p>
 
                           <div className="mt-2 flex items-center gap-2">
@@ -125,7 +130,9 @@ function Cart({ isOpen, onClose, items, onClear, onUpdateQuantity, onRemoveItem 
                           </div>
                         </div>
                         <div className="text-right text-sm font-bold text-gray-900">
-                          {`S/. ${(item.product.price * item.quantity).toFixed(2)}`}
+                          S/.
+                          {' '}
+                          {(item.product.price * item.quantity).toFixed(2)}
                         </div>
                       </li>
                     ))}
@@ -140,7 +147,9 @@ function Cart({ isOpen, onClose, items, onClear, onUpdateQuantity, onRemoveItem 
                 <div className="flex justify-between text-gray-600">
                   <span>Subtotal</span>
                   <span>
-                    {`S/. ${subtotal.toFixed(2)}`}
+                    S/.
+                    {' '}
+                    {subtotal.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex justify-between text-gray-600">
@@ -150,7 +159,9 @@ function Cart({ isOpen, onClose, items, onClear, onUpdateQuantity, onRemoveItem 
                 <div className="flex justify-between border-t border-gray-200 pt-2 text-base font-extrabold text-gray-900">
                   <span>Total</span>
                   <span className="text-blue-600">
-                    {`S/. ${total.toFixed(2)}`}
+                    S/.
+                    {' '}
+                    {total.toFixed(2)}
                   </span>
                 </div>
               </div>
@@ -158,7 +169,7 @@ function Cart({ isOpen, onClose, items, onClear, onUpdateQuantity, onRemoveItem 
               <div className="flex flex-col gap-2">
                 <button
                   type="button"
-                  onClick={onClose}
+                  onClick={onCheckout || onClose}
                   className="w-full rounded-xl bg-blue-600 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-700 active:scale-98"
                 >
                   Continuar al Pago →

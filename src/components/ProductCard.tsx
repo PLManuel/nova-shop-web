@@ -8,7 +8,7 @@ interface Props {
 function ProductCard({ product, onAddToCart }: Props) {
   return (
     <div className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/5">
-      <div className="relative aspect-4/3 w-full overflow-hidden bg-gray-100">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
         <img
           src={product.imageUrl}
           alt={product.name}
@@ -49,7 +49,9 @@ function ProductCard({ product, onAddToCart }: Props) {
           <div>
             <span className="block text-xs font-medium uppercase text-gray-400">Precio</span>
             <span className="text-xl font-extrabold text-gray-900">
-              {`S/. ${product.price.toFixed(2)}`}
+              S/.
+              {' '}
+              {product.price.toFixed(2)}
             </span>
           </div>
 
