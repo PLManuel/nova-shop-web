@@ -24,30 +24,30 @@ function ProductCard({ product, onAddToCart }: Props) {
 
       <div className="flex flex-1 flex-col justify-between p-5">
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs text-amber-500 font-semibold">
+          <div className="flex items-center justify-between text-xs font-semibold text-amber-500">
             <span className="flex items-center gap-1">
               ⭐
               {' '}
               {product.rating.toFixed(1)}
             </span>
-            <span className="text-gray-400 font-normal">
+            <span className="font-normal text-gray-400">
               {product.stock}
               {' '}
-              in stock
+              disponibles
             </span>
           </div>
 
-          <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+          <h3 className="text-lg font-bold text-gray-900 transition-colors group-hover:text-blue-600">
             {product.name}
           </h3>
-          <p className="text-sm leading-relaxed text-gray-500 line-clamp-2">
+          <p className="line-clamp-2 text-sm leading-relaxed text-gray-500">
             {product.description}
           </p>
         </div>
 
         <div className="mt-6 flex items-center justify-between border-t border-gray-50 pt-4">
           <div>
-            <span className="text-xs font-medium uppercase text-gray-400 block">Price</span>
+            <span className="block text-xs font-medium uppercase text-gray-400">Precio</span>
             <span className="text-xl font-extrabold text-gray-900">
               $
               {product.price.toFixed(2)}
@@ -59,7 +59,7 @@ function ProductCard({ product, onAddToCart }: Props) {
             onClick={() => onAddToCart(product)}
             className="flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all hover:bg-blue-700 active:scale-95"
           >
-            <span>Add to Cart</span>
+            <span>Agregar</span>
             <span>+</span>
           </button>
         </div>

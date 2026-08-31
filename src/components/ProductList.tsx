@@ -13,14 +13,15 @@ function ProductList({ onAddToCart }: Props) {
     <section id="catalog" className="py-12">
       <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-600">Featured Gear</span>
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">All Products</h2>
+          <span className="text-xs font-bold uppercase tracking-wider text-blue-600">Equipamiento Destacado</span>
+          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">Catálogo de Productos</h2>
         </div>
         <p className="text-sm text-gray-500">
-          Showing
+          Mostrando
+          {' '}
           {products.length}
           {' '}
-          products with free delivery
+          productos con envío gratuito
         </p>
       </div>
 

@@ -30,7 +30,7 @@ function App() {
       }
       return [...prev, { product, quantity: 1 }]
     })
-    showToast(`Added "${product.name}" to cart!`)
+    showToast(`¡Se agregó "${product.name}" al carrito!`)
   }
 
   function updateQuantity(productId: number, delta: number) {
@@ -59,25 +59,25 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-blue-500 selection:text-white">
-      {/* Navbar */}
+      {/* Barra de navegación */}
       <Navbar cartCount={totalItems} onOpenCart={() => setIsCartOpen(true)} />
 
-      {/* Hero */}
+      {/* Sección Hero */}
       <Hero />
 
-      {/* Main Content */}
+      {/* Contenido Principal */}
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ProductList onAddToCart={addToCart} />
       </main>
 
-      {/* Footer */}
+      {/* Pie de página */}
       <footer className="mt-20 border-t border-gray-200 bg-white py-8 text-center text-sm text-gray-500">
         <div className="mx-auto max-w-7xl px-4">
-          <p>© 2026 NovaShop. Modern E-commerce Demo with automated CI/CD.</p>
+          <p>© 2026 NovaShop. Demostración de E-commerce con CI/CD automatizado.</p>
         </div>
       </footer>
 
-      {/* Cart Drawer */}
+      {/* Carrito Lateral */}
       <Cart
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
@@ -87,9 +87,9 @@ function App() {
         onRemoveItem={removeItem}
       />
 
-      {/* Toast Notification */}
+      {/* Notificación Toast */}
       {toastMessage && (
-        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-2xl bg-gray-900 px-4 py-3 text-sm font-semibold text-white shadow-2xl transition-all animate-bounce">
+        <div className="fixed bottom-5 right-5 z-50 flex animate-bounce items-center gap-2 rounded-2xl bg-gray-900 px-4 py-3 text-sm font-semibold text-white shadow-2xl transition-all">
           <span>✨</span>
           <span>{toastMessage}</span>
         </div>

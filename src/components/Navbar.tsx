@@ -18,11 +18,11 @@ function Navbar({ cartCount, onOpenCart }: Props) {
             </span>
           </a>
           <nav className="hidden items-center gap-6 text-sm font-medium text-gray-600 md:flex">
-            <a href="#hero" className="transition-colors hover:text-blue-600">Home</a>
-            <a href="#catalog" className="transition-colors hover:text-blue-600">Catalog</a>
-            <a href="#deals" className="flex items-center gap-1.5 transition-colors hover:text-blue-600">
-              <span>Deals</span>
-              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">Hot</span>
+            <a href="#hero" className="transition-colors hover:text-blue-600">Inicio</a>
+            <a href="#catalog" className="transition-colors hover:text-blue-600">Catálogo</a>
+            <a href="#catalog" className="flex items-center gap-1.5 transition-colors hover:text-blue-600">
+              <span>Ofertas</span>
+              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">Top</span>
             </a>
           </nav>
         </div>
@@ -31,11 +31,11 @@ function Navbar({ cartCount, onOpenCart }: Props) {
           <button
             type="button"
             onClick={onOpenCart}
-            aria-label="View Cart"
+            aria-label="Ver Carrito"
             className="group relative flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-700 transition hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600"
           >
             <span className="text-lg">🛒</span>
-            <span>Cart</span>
+            <span>Carrito</span>
             {cartCount > 0 && (
               <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-blue-600 px-1.5 text-xs font-bold text-white shadow-sm transition-transform group-hover:scale-110">
                 {cartCount}

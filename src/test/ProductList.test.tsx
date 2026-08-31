@@ -13,7 +13,7 @@ describe('productList', () => {
 
   it('renders an Add to Cart button for each product', () => {
     render(<ProductList onAddToCart={vi.fn()} />)
-    const buttons = screen.getAllByRole('button', { name: /add to cart/i })
+    const buttons = screen.getAllByRole('button', { name: /agregar/i })
     expect(buttons).toHaveLength(productsData.length)
   })
 })
